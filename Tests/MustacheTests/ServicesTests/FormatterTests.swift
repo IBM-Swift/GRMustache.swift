@@ -24,7 +24,6 @@
 import XCTest
 import Mustache
 import Foundation
-import Bridging
 
 class FormatterTests: XCTestCase {
 

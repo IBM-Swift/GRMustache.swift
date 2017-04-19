@@ -21,7 +21,6 @@
 // THE SOFTWARE.
 
 import Foundation
-import Bridging
 
 final class TemplateCompiler: TemplateTokenConsumer {
     private var state: CompilerState

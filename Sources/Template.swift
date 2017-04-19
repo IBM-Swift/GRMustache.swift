@@ -22,7 +22,6 @@
 
 
 import Foundation
-import Bridging
 
 /**
 Template instances render Mustache templates.

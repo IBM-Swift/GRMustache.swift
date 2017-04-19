@@ -25,7 +25,6 @@ import XCTest
 import Mustache
 import Foundation
 import SwiftyJSON
-import Bridging
 
 class TemplateFromMethodsTests: XCTestCase {
 
