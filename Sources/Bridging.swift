@@ -24,13 +24,13 @@
     // Array related _bridgeToSwift() functions
 
 //    extension Array {
-//        public func _bridgeToSwift() -> NSArray {
+//        func _bridgeToSwift() -> NSArray {
 //            return NSArray(array: map { return $0 as Any } )
 //        }
 //    }
 
     extension NSArray {
-        public func _bridgeToSwift() -> Array<AnyObject> {
+        func _bridgeToSwift() -> Array<AnyObject> {
             return self as Array<AnyObject>
         }
     }
@@ -39,13 +39,13 @@
     // Dictionary related _bridgeToSwift() functions
 
 //    extension Dictionary {
-//        public func _bridgeToSwift() -> NSDictionary {
+//        func _bridgeToSwift() -> NSDictionary {
 //            return [NSObject : AnyObject](dictionaryLiteral: self)
 //        }
 //    }
 
     extension NSDictionary {
-        public func _bridgeToSwift() -> [NSObject: AnyObject] {
+        func _bridgeToSwift() -> [NSObject: AnyObject] {
             return self as [NSObject: AnyObject]
         }
     }
@@ -53,7 +53,7 @@
 
     // String related _bridgeToSwift() functions
 
-    public extension NSString {
+    extension NSString {
         func _bridgeToSwift() -> String {
             return self as String
         }

@@ -17,19 +17,19 @@
 import Foundation
 
 #if os(Linux)
-public class FoundationAdapter: FoundationAdapterProtocol {
+class FoundationAdapter: FoundationAdapterProtocol {
     #if swift(>=3.1)
-        public typealias RegularExpression = Foundation.NSRegularExpression
+        typealias RegularExpression = Foundation.NSRegularExpression
     #else
-        public typealias RegularExpression = Foundation.RegularExpression
+        typealias RegularExpression = Foundation.RegularExpression
     #endif
-    public typealias NSMatchingOptions = Foundation.NSMatchingOptions
+    typealias NSMatchingOptions = Foundation.NSMatchingOptions
 
     /// Return the path component of a URL
     ///
     /// - Parameter from: The `URL`
     /// - Returns: The path component
-    public static func getPath(from url: URL) -> String? {
+    static func getPath(from url: URL) -> String? {
         return url.path
     }
 
@@ -37,7 +37,7 @@ public class FoundationAdapter: FoundationAdapterProtocol {
     ///
     /// - Parameter for: The class
     /// - Returns: The bundle
-    public static func getBundle(for aClass: AnyClass) -> Bundle {
+    static func getBundle(for aClass: AnyClass) -> Bundle {
         // Bundle(for:) is not yet implemented on Linux
         //TODO remove this ifdef once Bundle(for:) is implemented
         // issue https://bugs.swift.org/browse/SR-953
@@ -51,7 +51,7 @@ public class FoundationAdapter: FoundationAdapterProtocol {
     ///
     /// - Parameter from: The error
     /// - Returns: The converted `NSError`
-    public static func getNSError(from error: Error?) -> NSError? {
+    static func getNSError(from error: Error?) -> NSError? {
         #if swift(>=3.1)
 	    return error as? NSError
         #else

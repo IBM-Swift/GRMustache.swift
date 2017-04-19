@@ -22,7 +22,7 @@ import Foundation
 // it is a random collection of methods used in various IBM@Swift repositories
 // it is not itended to contain an exhaustive list of discrepancies
 
-public protocol FoundationAdapterProtocol {
+protocol FoundationAdapterProtocol {
     /// Return the path component of a URL
     ///
     /// - Parameter from: The `URL`
