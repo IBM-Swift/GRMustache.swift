@@ -37,7 +37,7 @@ ifeq ($(UNAME), Linux)
 	@echo --- Checking Linux release
 	-lsb_release -d
 	@echo --- Fetching dependencies
-	swift package fetch
+	swift package resolve
 endif
 	@echo --- Invoking swift build
 	swift build $(CC_FLAGS) $(SWIFTC_FLAGS) $(LINKER_FLAGS)
@@ -56,15 +56,15 @@ refetch:
 	@echo --- Removing Packages directory
 	rm -rf Packages
 	@echo --- Fetching dependencies
-	swift package fetch
+	swift package resolve
 
 update:
 	@echo --- Updating dependencies
 	swift package update
 
 clean:
-	@echo --- Invoking swift build --clean
-	swift build --clean
+	@echo --- Invoking swift package clean
+	swift package clean
 
 Tests/vendor/groue/GRMustacheSpec/Tests:
 	@echo --- Fetching GRMustacheSpec

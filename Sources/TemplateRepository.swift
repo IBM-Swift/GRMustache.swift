@@ -453,7 +453,7 @@ final public class TemplateRepository {
             let normalizedName: String
             let normalizedBaseTemplateID: TemplateID?
             if !name.isEmpty && name[name.startIndex] == "/" {
-                normalizedName = name.substring(from: name.index(after: name.startIndex))
+                normalizedName = String(name[name.index(after: name.startIndex)...])
                 normalizedBaseTemplateID = nil
             } else {
                 normalizedName = name
@@ -517,7 +517,7 @@ final public class TemplateRepository {
             let normalizedName: String
             let normalizedBaseTemplateID: TemplateID?
             if !name.isEmpty && name[name.startIndex] == "/" {
-                normalizedName = name.substring(from: name.index(after: name.startIndex))
+                normalizedName = String(name[name.index(after: name.startIndex)...])
                 normalizedBaseTemplateID = nil
             } else {
                 normalizedName = name
@@ -530,8 +530,8 @@ final public class TemplateRepository {
             if let normalizedBaseTemplateID = normalizedBaseTemplateID {
                 var templateIDWithoutLastComponent = (URL(string: normalizedBaseTemplateID)?.deletingLastPathComponent().absoluteString)!
                 if templateIDWithoutLastComponent.hasSuffix("/") {
-                    templateIDWithoutLastComponent = templateIDWithoutLastComponent.substring(to:
-                        templateIDWithoutLastComponent.index(before: templateIDWithoutLastComponent.endIndex))
+                    templateIDWithoutLastComponent = String(templateIDWithoutLastComponent[
+                        ..<templateIDWithoutLastComponent.index(before: templateIDWithoutLastComponent.endIndex)])
                 }
                 let relativePath = templateIDWithoutLastComponent.replacingOccurrences(of: bundle.resourcePath!, with:"")
                 return bundle.path(forResource: normalizedName, ofType: templateExtension, inDirectory: relativePath)

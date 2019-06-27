@@ -270,7 +270,7 @@ extension StandardLibrary {
 		    result += (argument ?? "")
 		}
 
-		var indices = format.characters.indices
+		var indices = format.indices
 		var args = Array(args.reversed())
 
 		while indices.count > 0 {

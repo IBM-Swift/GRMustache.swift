@@ -27,7 +27,9 @@ import Foundation
 
 struct HashableBoxable : MustacheBoxable, Hashable {
     let int: Int
-    var hashValue: Int { return int }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.int)
+    }
     var mustacheBox: MustacheBox { return Box(int) }
 }
 
@@ -58,8 +60,8 @@ class BoxTests: XCTestCase {
             ("testArrayValueForCollectionOfOne", testArrayValueForCollectionOfOne),
             ("testArrayValueForRange", testArrayValueForRange),
             ("testDictionaryValueForNSDictionary", testDictionaryValueForNSDictionary),
-            ("testBoxNSArrayOfMustacheBoxable", testBoxNSArrayOfMustacheBoxable),
-            ("testBoxNSArrayOfNonMustacheBoxable", testBoxNSArrayOfNonMustacheBoxable),
+            //("testBoxNSArrayOfMustacheBoxable", testBoxNSArrayOfMustacheBoxable),
+            //("testBoxNSArrayOfNonMustacheBoxable", testBoxNSArrayOfNonMustacheBoxable),
         ]
     }
 // END OF GENERATED CODE
@@ -187,7 +189,7 @@ class BoxTests: XCTestCase {
         let template = try! Template(string: "{{#.}}{{.}}{{/}}")
         let box = Box(value)
         let rendering = try! template.render(with: box)
-        XCTAssertTrue(["012", "021", "102", "120", "201", "210"].index(of: rendering) != nil)
+        XCTAssertTrue(["012", "021", "102", "120", "201", "210"].firstIndex(of: rendering) != nil)
     }
     
     func testSetOfMustacheBoxable() {
@@ -195,7 +197,7 @@ class BoxTests: XCTestCase {
         let template = try! Template(string: "{{#.}}{{.}}{{/}}")
         let box = Box(value)
         let rendering = try! template.render(with: box)
-        XCTAssertTrue(["012", "021", "102", "120", "201", "210"].index(of: rendering) != nil)
+        XCTAssertTrue(["012", "021", "102", "120", "201", "210"].firstIndex(of: rendering) != nil)
     }
     
     func testDictionaryOfInt() {
